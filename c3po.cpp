@@ -3,6 +3,7 @@ cs4410 HW #3
 10-22-14 */
 
 #include <GL/glut.h>
+#include <GL/glu.h>
 #include <iostream>
 using namespace std;
 
@@ -16,15 +17,8 @@ void drawRobot(){
 	glColor3f(0.6, 0.6, 0.0);
 	glPushMatrix();
 	glTranslated(0.0, 1.0, 0.0);
-	glutSolidSphere(.25, 20, 20);
-	glPopMatrix();
-
-	//Hair
-	glColor3f(0.7, 0.7, 0.0);
-	glPushMatrix();
-	glTranslated(0.0, 1.0, -0.10);
-	glScaled(1.0, 0.9, 0.9);
-	glutSolidSphere(0.3, 40, 40);
+	glScaled(1.0, 1.20, 1.0);
+	glutSolidSphere(.25, 30, 30);
 	glPopMatrix();
 
 	//eyes
@@ -107,7 +101,6 @@ void leftArm(){
 	glScaled(0.80, 1.0, 1.0);
 	glutSolidSphere(.08, 20, 20);
 	glPopMatrix();
-
 }
 //Draw right arm
 void rightArm(){
@@ -175,6 +168,15 @@ void rightLeg(){
 	glTranslated(0.20, -0.485, 0.0);
 	glScaled(1.0, 0.65, 1.0);
 	glutSolidSphere(.1, 20, 20);
+	glPopMatrix();
+}
+//Draw floor
+void floor(){
+	glColor3f(0.9, 0.4, 0.1);
+	glPushMatrix();
+	glTranslated(0.0, -0.7, 0.0);
+	glScaled(2, 0.05, 2);
+	glutSolidCube(5);
 	glPopMatrix();
 }
 
@@ -277,6 +279,7 @@ void myDisplay(void){
 	rightArm();
 	leftLeg();
 	rightLeg();
+	floor();
 	glPopMatrix();
 	}
 
@@ -353,7 +356,7 @@ int main(int argc, char **argv){
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);  //double buffering for animation
 	glutInitWindowSize(800, 640);
 	glutInitWindowPosition(100, 100);
-	glutCreateWindow("Give me your candy Kid!!!");
+	glutCreateWindow("Oh Céus!!!");
 	glutDisplayFunc(myDisplay);
 	glutIdleFunc(Walk);		//Ongoing walking function for when nothing else happening
 
