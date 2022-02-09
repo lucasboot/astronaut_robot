@@ -12,6 +12,99 @@ using namespace std;
  double limbAngle = 0.0; //Walking angle
  bool walk = false;	//For walking
 
+//coordenadas de textura 2D
+float textures[6][4][2]=
+{
+//coordenadas de textura da 1ª face 
+0.0, 0.0,
+1.0, 0.0,
+1.0, 1.0, 
+0.0, 1.0,
+//coordenadas de textura da 2ª face
+0.0, 0.0,
+1.0, 0.0,
+1.0, 1.0, 
+0.0, 1.0,
+//coordenadas de textura da 3ª face
+0.0, 0.0,
+1.0, 0.0,
+1.0, 1.0, 
+0.0, 1.0,
+//coordenadas de textura da 4ª face
+0.0, 0.0,
+1.0, 0.0,
+1.0, 1.0, 
+0.0, 1.0,
+//coordenadas de textura da 5ª face
+0.0, 0.0,
+1.0, 0.0,
+1.0, 1.0, 
+0.0, 1.0,
+//coordenadas de textura da 6ª face
+0.0, 0.0,
+1.0, 0.0,
+1.0, 1.0, 
+0.0, 1.0,
+};
+
+//glScaled(2, 0.05, 2);
+//Coordenadas dasfaces fazes do cubo
+float cube[6][4][3]=
+{
+-2.0, -0.60, -2.0,
+-2.0, -0.60, 2.0,
+-2.0, -0.55, 2.0,
+-2.0, -0.55, -2.0,
+
+-2.0, -0.60, -2.0,
+-2.0, -0.55, -2.0,
+2.0, -0.55, -2.0,
+2.0, -0.60, -2.0,
+
+-2.0, -0.60, -2.0,
+2.0, -0.60, -2.0,
+2.0, -0.60, 2.0,
+-2.0, -0.60, 2.0,
+
+-2.0, -0.60, 2.0,
+2.0, -0.60, 2.0,
+2.0, -0.55, 2.0,
+-2.0, -0.55, 2.0,
+
+-2.0, -0.55, -2.0,
+-2.0, -0.55, 2.0,
+2.0, -0.55, 2.0,
+2.0, -0.55, -2.0,
+
+2.0, -0.60, -2.0,
+2.0, -0.55, -2.0,
+2.0, -0.55, 2.0,
+2.0, -0.60, 2.0,
+};
+
+//desenhar um cubo por coordenadas
+void drawCube()
+{
+int i,j;
+glDisable(GL_COLOR);
+glEnable(GL_TEXTURE_2D);
+for(i = 0; i < 6; i++)
+    {
+    glBindTexture(GL_TEXTURE_2D, i+1);
+    //se as texturas forem diferentes 
+    //glBindTexture(GL_TEXTURE_2D, i);  
+    glBegin(GL_QUADS);
+    for(j = 0; j < 4; j++)
+        {
+        glTexCoord2f(textures[i][j][0], textures[i][j][1]);
+        glVertex3f(cube[i][j][0], cube[i][j][1], cube[i][j][2]);
+        }
+    glEnd();
+    }
+glDisable(GL_TEXTURE_2D);
+glEnable(GL_COLOR);
+}
+
 void drawRobot(){
 	//head
 	glColor3f(0.6, 0.6, 0.0);
@@ -170,23 +263,78 @@ void rightLeg(){
 	glutSolidSphere(.1, 20, 20);
 	glPopMatrix();
 }
-//Draw floor
-void floor(){
-	glColor3f(0.9, 0.4, 0.1);
-	glPushMatrix();
-	glTranslated(0.0, -0.7, 0.0);
-	glScaled(2, 0.05, 2);
-	glutSolidCube(5);
-	glPopMatrix();
+
+GLuint LoadTexture(GLuint tex, const char * filename, int width, int height)
+{
+//bmp padrão 24 bits
+unsigned char * data;
+unsigned char R,G,B;
+FILE * file;
+
+//carregando imagem do arquivo .bmp
+file = fopen(filename, "rb");
+
+if(file == NULL)return 0;
+//alocar memória para variável de dados
+data =(unsigned char *)malloc(width * height * 3);
+//deslocamento de salto de sobrecarga
+fseek(file,128,0);
+//leia todo o arquivo de arquivo em uma variável de dados
+fread(data, width * height * 3, 1, file);
+//feche o arquivo
+fclose(file);
+
+//reorganize os valores R, G, B ​​​​para exibir a cor corretamente
+int index;
+for(int i = 0; i < width * height ; ++i)
+	{
+	index = i*3;
+	B = data[index]; G = data[index+1]; R = data[index+2];
+	data[index] = R; data[index+1] = G; data[index+2] = B;
+	}
+
+//criar textura a partir da imagem carregada
+glGenTextures(1, &tex);
+glBindTexture(GL_TEXTURE_2D, tex);
+
+// filtragem de textura
+
+gluBuild2DMipmaps(GL_TEXTURE_2D, 3, width, height, GL_RGB, GL_UNSIGNED_BYTE, data);
+
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR); 
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+// glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+// glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_DECAL);
+
+//a textura é criada e, portanto, agora você pode
+//livre memória da imagem carregada
+free(data);
+return 0;
 }
 
 
 void myInit(){
-	glClearColor(1.0f, 1.0f, 1.0f, 0.0f);
+	glClearColor(0.0, 0.0, 0.0, 0.0);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glOrtho(-2.0*(64/48.0), 2.0*(64/48.0), -2.0, 2.0, 0.1, 100.0); //left, right, bottom, top, near, far Parallel Projection
 	glViewport(0, 0, 800, 640);
+	//permitir sombras borradas
+	glShadeModel(GL_SMOOTH);
+	//cor da tela preta
+	glClearColor(0.0, 0.0, 0.0, 0.0);
+	//permitir texturas
+	glEnable(GL_TEXTURE_2D);
+	//carregando textura de bmp 24 bits
+	LoadTexture(1, "01.bmp", 316, 316);
+	LoadTexture(2, "02.bmp", 316, 316);
+	LoadTexture(3, "05.bmp", 316, 316);
+	LoadTexture(4, "03.bmp", 316, 316);
+	LoadTexture(5, "06.bmp", 316, 316);
+	LoadTexture(6, "04.bmp", 316, 316);
 
 	//set properties of the surface material
     
@@ -235,6 +383,7 @@ void myDisplay(void){
 	glRotated(vertAngle, 1.0, 0.0, 0.0f);
 	glRotated(horizAngle, 0.0, 1.0, 0.0f);
 	drawRobot();
+	drawCube();
 	glPopMatrix();
 	//Left arm walking movement
 	glPushMatrix();
@@ -275,11 +424,11 @@ void myDisplay(void){
 	glRotated(vertAngle, 1.0, 0.0, 0.0f);
 	glRotated(horizAngle, 0.0, 1.0, 0.0f);
 	drawRobot();
+	drawCube();
 	leftArm();
 	rightArm();
 	leftLeg();
 	rightLeg();
-	floor();
 	glPopMatrix();
 	}
 
@@ -354,9 +503,9 @@ int main(int argc, char **argv){
 
 	glutInit(&argc, argv);  //OpenGL utility kit
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);  //double buffering for animation
-	glutInitWindowSize(800, 640);
-	glutInitWindowPosition(100, 100);
-	glutCreateWindow("Oh Céus!!!");
+	glutInitWindowSize(1024, 720);
+	glutInitWindowPosition(1024, 720);
+	glutCreateWindow("Oh Ceus!!!");
 	glutDisplayFunc(myDisplay);
 	glutIdleFunc(Walk);		//Ongoing walking function for when nothing else happening
 
