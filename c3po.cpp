@@ -123,34 +123,61 @@ void drawRobot(){
 	glPopMatrix();
 
 	//body
-	glColor3f(0.6, 0.6, 0.0);
+	glColor3f(1, 1, 0.9);
 	glPushMatrix();
 	glTranslated(0.0, 0.40, 0.0);
 	glScaled(1.0, 1.5, 0.30);
 	glutSolidCube(.50);
 	glPopMatrix();
 
+	//mochila
+    glColor3f(1, 1, 0.9);
+    glPushMatrix();
+    glTranslated(0.0, 0.5, -0.1);
+    glScaled(0.8, 1.5, 0.7);
+    glutSolidCube(.4);
+    glPopMatrix();
+
+	//bandeira
+	//Vermelho
+	glColor3f(1, 0, 0);
+    glPushMatrix();
+    glTranslated(0.0, 0.7, -0.11);
+    glScaled(0.3, 0.1, 0.7);
+    glutSolidCube(.4);
+    glPopMatrix();
+	//Branco
+	glColor3f(1, 1, 1);
+    glPushMatrix();
+    glTranslated(0.0, 0.66, -0.11);
+    glScaled(0.3, 0.1, 0.7);
+    glutSolidCube(.4);
+    glPopMatrix();
+	//Azul
+	glColor3f(0, 0, 1);
+    glPushMatrix();
+    glTranslated(0.0, 0.62, -0.11);
+    glScaled(0.3, 0.1, 0.7);
+    glutSolidCube(.4);
+    glPopMatrix();
+
 }
 //Draw left arm
 void leftArm(){
-	glColor3f(0.6, 0.6, 0.0);	
+	glColor3f(1, 1, 0.9);	
 	glPushMatrix();
 	glTranslated(-0.30, 0.50, 0.0);
-	glScaled(0.07, 1.0, 0.20);
+	glScaled(0.20, 1.0, 0.20);
 	glutSolidCube(.50);
 	glPopMatrix();	
+	glColor3f(1, 0, 0);
 	glPushMatrix();
-	glTranslated(-0.270, 0.50, 0.0);
-	glScaled(0.07, 1.0, 0.20);
-	glutSolidCube(.50);
-	glPopMatrix();
-	glPushMatrix();
-	glTranslated(-0.33, 0.50, 0.0);
-	glScaled(0.07, 1.0, 0.20);
+	glTranslated(-0.30, 0.50, 0.0);
+	glScaled(0.21, 0.1, 0.21);
 	glutSolidCube(.50);
 	glPopMatrix();
 	//hand
-	glColor3f(0.6, 0.6, 0.0);	
+	glColor3f(1, 1, 0.9);	
 	glPushMatrix();
 	glTranslated(-0.30, 0.17, 0.0);
 	glScaled(0.80, 1.0, 1.0);
@@ -159,24 +186,20 @@ void leftArm(){
 }
 //Draw right arm
 void rightArm(){
-	glColor3f(1.0, 0.0, 0.0);	
+	glColor3f(1, 1, 0.9);	
 	glPushMatrix();
 	glTranslated(0.30, 0.50, 0.0);
-	glScaled(0.07, 1.0, 0.20);
+	glScaled(0.20, 1.0, 0.20);
 	glutSolidCube(.50);
 	glPopMatrix();	
+	glColor3f(1, 0, 0);
 	glPushMatrix();
-	glTranslated(0.270, 0.50, 0.0);
-	glScaled(0.07, 1.0, 0.20);
-	glutSolidCube(.50);
-	glPopMatrix();
-	glPushMatrix();
-	glTranslated(0.33, 0.50, 0.0);
-	glScaled(0.07, 1.0, 0.20);
+	glTranslated(0.30, 0.50, 0.0);
+	glScaled(0.21, 0.1, 0.21);
 	glutSolidCube(.50);
 	glPopMatrix();
 	//hand
-	glColor3f(1.0, 0.0, 0.0);	
+	glColor3f(1, 1, 0.9);	
 	glPushMatrix();
 	glTranslated(0.30, 0.17, 0.0);
 	glScaled(0.80, 1.0, 1.0);
@@ -185,14 +208,20 @@ void rightArm(){
 }
 //Draw left leg
 void leftLeg(){
-	glColor3f(0.6, 0.6, 0.0);
+	glColor3f(1, 1, 0.9);
 	glPushMatrix();	
 	glTranslated(-0.20, -0.220, 0.0);
 	glScaled(0.20, 1.0, 0.20);
 	glutSolidCube(.50);
 	glPopMatrix();
+	glColor3f(1, 0, 0);
+	glPushMatrix();	
+	glTranslated(-0.20, -0.220, 0.0);
+	glScaled(0.21, 0.1, 0.21);
+	glutSolidCube(.50);
+	glPopMatrix();
 	//shoe
-	glColor3f(0.6, 0.6, 0.0);
+	glColor3f(0.05, 0.05, 0.05);
 	glPushMatrix();
 	glTranslated(-0.20, -0.50, 0.15);
 	glScaled(1.0, 0.60, 1.50);
@@ -206,14 +235,20 @@ void leftLeg(){
 }
 //Draw right leg
 void rightLeg(){
-	glColor3f(0.6, 0.6, 0.0);
+	glColor3f(1, 1, 0.9);
 	glPushMatrix();	
 	glTranslated(0.20, -0.220, 0.0);
 	glScaled(0.20, 1.0, 0.20);
 	glutSolidCube(.50);
 	glPopMatrix();
+	glColor3f(1, 0, 0);
+	glPushMatrix();	
+	glTranslated(0.20, -0.220, 0.0);
+	glScaled(0.21, 0.1, 0.21);
+	glutSolidCube(.50);
+	glPopMatrix();
 	//shoe
-	glColor3f(0.6, 0.6, 0.0);
+	glColor3f(0.05, 0.05, 0.05);
 	glPushMatrix();
 	glTranslated(0.20, -0.50, 0.15);
 	glScaled(1.0, 0.60, 1.50);
