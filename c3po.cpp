@@ -329,12 +329,12 @@ void myInit(){
 	//permitir texturas
 	glEnable(GL_TEXTURE_2D);
 	//carregando textura de bmp 24 bits
-	LoadTexture(1, "01.bmp", 316, 316);
-	LoadTexture(2, "02.bmp", 316, 316);
-	LoadTexture(3, "05.bmp", 316, 316);
-	LoadTexture(4, "03.bmp", 316, 316);
-	LoadTexture(5, "06.bmp", 316, 316);
-	LoadTexture(6, "04.bmp", 316, 316);
+	LoadTexture(1, "lua.bmp", 1024, 602);
+	LoadTexture(2, "lua.bmp", 1024, 602);
+	LoadTexture(3, "lua.bmp", 1024, 602);
+	LoadTexture(4, "lua.bmp", 1024, 602);
+	LoadTexture(5, "lua.bmp", 1024, 602);
+	LoadTexture(6, "lua.bmp", 1024, 602);
 
 	//set properties of the surface material
     
