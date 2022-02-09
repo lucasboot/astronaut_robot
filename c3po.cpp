@@ -51,35 +51,35 @@ float textures[6][4][2]=
 //Coordenadas dasfaces fazes do cubo
 float cube[6][4][3]=
 {
--2.0, -0.60, -2.0,
--2.0, -0.60, 2.0,
--2.0, -0.55, 2.0,
--2.0, -0.55, -2.0,
+-6.0, -0.60, -6.0,
+-6.0, -0.60, 6.0,
+-6.0, -0.55, 6.0,
+-6.0, -0.55, -6.0,
 
--2.0, -0.60, -2.0,
--2.0, -0.55, -2.0,
-2.0, -0.55, -2.0,
-2.0, -0.60, -2.0,
+-6.0, -0.60, -6.0,
+-6.0, -0.55, -6.0,
+6.0, -0.55, -6.0,
+6.0, -0.60, -6.0,
 
--2.0, -0.60, -2.0,
-2.0, -0.60, -2.0,
-2.0, -0.60, 2.0,
--2.0, -0.60, 2.0,
+-6.0, -0.60, -6.0,
+6.0, -0.60, -6.0,
+6.0, -0.60, 6.0,
+-6.0, -0.60, 6.0,
 
--2.0, -0.60, 2.0,
-2.0, -0.60, 2.0,
-2.0, -0.55, 2.0,
--2.0, -0.55, 2.0,
+-6.0, -0.60, 6.0,
+6.0, -0.60, 6.0,
+6.0, -0.55, 6.0,
+-6.0, -0.55, 6.0,
 
--2.0, -0.55, -2.0,
--2.0, -0.55, 2.0,
-2.0, -0.55, 2.0,
-2.0, -0.55, -2.0,
+-6.0, -0.55, -6.0,
+-6.0, -0.55, 6.0,
+6.0, -0.55, 6.0,
+6.0, -0.55, -6.0,
 
-2.0, -0.60, -2.0,
-2.0, -0.55, -2.0,
-2.0, -0.55, 2.0,
-2.0, -0.60, 2.0,
+6.0, -0.60, -6.0,
+6.0, -0.55, -6.0,
+6.0, -0.55, 6.0,
+6.0, -0.60, 6.0,
 };
 
 //desenhar um cubo por coordenadas
@@ -106,58 +106,20 @@ glEnable(GL_COLOR);
 }
 
 void drawRobot(){
-	//head
-	glColor3f(0.6, 0.6, 0.0);
+	//head - capacete
+	glColor3f(1, 1, 0.9);
 	glPushMatrix();
-	glTranslated(0.0, 1.0, 0.0);
-	glScaled(1.0, 1.20, 1.0);
-	glutSolidSphere(.25, 30, 30);
+	glTranslated(0.0, 1.05, 0.0);
+	glScaled(1.0, 1.0, 1.0);
+	glutSolidSphere(.30, 30, 30);
 	glPopMatrix();
 
-	//eyes
-	glColor3f(0.6, 0.6, 0.0);
+	//head - Viseira
+	glColor3f(0.1, 0.1, 0.1);
 	glPushMatrix();
-	glTranslated(0.11, 1.1, 0.15);
-	glutSolidSphere(.07, 20, 20);
-	glPopMatrix();
-	glPushMatrix();
-	glTranslated(-0.11, 1.1, 0.15);
-	glutSolidSphere(.07, 20, 20);
-	glPopMatrix();
-	glColor3f(1.0, 1.0, 0.0);
-	glPushMatrix();
-	glTranslated(0.12, 1.12, 0.2);
-	glutSolidSphere(.03, 20, 20);
-	glPopMatrix();
-	glPushMatrix();
-	glTranslated(-0.12, 1.12, 0.2);
-	glutSolidSphere(.03, 20, 20);
-	glPopMatrix();
-	glColor3f(0.0, 0.0, 0.0);
-	glPushMatrix();
-	glTranslated(0.121, 1.125, 0.222);
-	glutSolidSphere(.01, 20, 20);
-	glPopMatrix();
-	glPushMatrix();
-	glTranslated(-0.121, 1.125, 0.222);
-	glutSolidSphere(.01, 20, 20);
-	glPopMatrix();
-
-	//mouth
-	glColor3f(0.8, 0.8, 0.0);
-	glPushMatrix();
-	glTranslated(0.0, 0.92, 0.2);
-	glRotated(20, 1.0, 0.0, 0.0);
-	glScaled(2.04, 0.65, 0.6);
-	glutSolidSphere(.07, 20, 20);
-	glPopMatrix();
-
-	//nose
-	glColor3f(0.9, 0.9, 0.0);
-	glPushMatrix();
-	glTranslated(0.0, 1.02, 0.29);
-	glScaled(0.80, 0.80, 1.0);
-	glutSolidSphere(.06, 20, 20);
+	glTranslated(0.0, 1.05, 0.05);
+	glScaled(1.0, 1.0, 1.05);
+	glutSolidSphere(.29, 30, 30);
 	glPopMatrix();
 
 	//body
