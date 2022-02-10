@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
- double horizAngle = 180.0;	//Ângulo de visão
+ double horizAngle = 0.0;	//Ângulo de visão
  double vertAngle = 0.0;	//Ângulo de visão
  double limbAngle = 0.0; //Ângulo da caminhada
  bool walk = false;	//Para caminhar
