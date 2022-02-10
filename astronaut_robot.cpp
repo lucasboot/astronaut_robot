@@ -217,6 +217,7 @@ void leftArm(){
 	glScaled(0.20, 1.0, 0.20);
 	glutSolidCube(.50);
 	glPopMatrix();	
+	//Faixa
 	glColor3f(1, 0, 0);
 	glPushMatrix();
 	glTranslated(-0.30, 0.50, 0.0);
@@ -239,6 +240,7 @@ void rightArm(){
 	glScaled(0.20, 1.0, 0.20);
 	glutSolidCube(.50);
 	glPopMatrix();	
+	//faixa
 	glColor3f(1, 0, 0);
 	glPushMatrix();
 	glTranslated(0.30, 0.50, 0.0);
@@ -261,6 +263,7 @@ void leftLeg(){
 	glScaled(0.20, 1.0, 0.20);
 	glutSolidCube(.50);
 	glPopMatrix();
+	//faixa
 	glColor3f(1, 0, 0);
 	glPushMatrix();	
 	glTranslated(-0.20, -0.220, 0.0);
@@ -288,6 +291,7 @@ void rightLeg(){
 	glScaled(0.20, 1.0, 0.20);
 	glutSolidCube(.50);
 	glPopMatrix();
+	//faixa
 	glColor3f(1, 0, 0);
 	glPushMatrix();	
 	glTranslated(0.20, -0.220, 0.0);
