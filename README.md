@@ -6,7 +6,8 @@
 <p align="center">
 <a href="#sobre-memo">Sobre</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
 <a href="#tecnologias-rocket">Tecnologias</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
-<a href="#como-executar-">Como Executar</a>&nbsp;&nbsp;&nbsp;
+<a href="#como-executar-">Como Executar</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;
+<a href="#interação">Interação</a>&nbsp;&nbsp;&nbsp;
 </p>
 
 ## Apresentação do Projeto :sparkles:
@@ -38,6 +39,16 @@ Projeto final da disciplinha de computação gráfica da ufrn, o projeto consist
 - Clone o repositório para sua máquina local;
 - Certifique-se de estar utilizando alguma distro linux e tenha o <a href="https://www.opengl.org/">OpenGl</a> e o <a href="https://www.opengl.org/resources/libraries/glut/">FreeGlut</a> instalado;
 - Abra o terminal no diretório e execute o seguinte comando <code>g++ astronaut_robot.cpp -o astronaut_robot -lm -lGL -lGLU -lglut && ./astronaut_robot</code>
+
+---
+
+## Interação
+
+- 's' -> Inicia ou desabilita animação
+- 'd' -> Define a posição de câmera default
+- 'z' -> shift + z aumenta o zoom e ctrl + z diminui o zoom
+- 'e' -> Encerra a exibição da imagem 
+- 'ArrowKeys' -> Fazem a movimentação da cãmera ao redor do objeto
 
 ---
 
